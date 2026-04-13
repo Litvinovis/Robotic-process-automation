@@ -4,8 +4,6 @@ DEFINE($var, 0)
 DEFINE($var2, 0)
 DEFINE($post, 0)
 
-goto(temp)
-
 LCLICK(546,302)           // начало выкладования новостей в группу
 WAITMS(RND(1501, 1700))
 LCLICK(844,183)
@@ -92,7 +90,7 @@ WAITMS(RND(1001, 1200))
 LCLICK(1343,219)
 WAITMS(1500)
 LCLICK(960,294)
-WAITMS(10000)      // заходим в профиль Рахима
+WAITMS(10000)      // заходим в профиль Медета
 VKFriendsAdd()
 LCLICK(546,169)  // переход на "мою страницу"   
 VKscroll()
@@ -115,7 +113,7 @@ WAITMS(1500)
 WHEELDOWN
 WAITMS(1500)
 LCLICK(980,161)
-WAITMS(10000)      // заходим в профиль Рахима
+WAITMS(10000)      // заходим в профиль Медета
 VKFriendsAdd()
 LCLICK(546,169)  // переход на "мою страницу"   
 VKscroll()
