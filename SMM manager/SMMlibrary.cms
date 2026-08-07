@@ -48,16 +48,7 @@ SUB(vklikes)        // Функция проставляет лайки к по�
 END_SUB
 
 
-SUB(VKGroupPost, $post)
-   WAITMS(RND(2501, 2900))
-   CLICK(797,531)
-   WAITMS(RND(2501, 2900))
-   LCLICK(692,609)
-   WAITMS(RND(1001, 1200))
-   LCLICK(990,536)         // устанавливаем время поста
-   WAITMS(RND(1001, 1200))
-   LCLICK(367,1056)        // переход в эксель
-   WAITMS(RND(1001, 1200))
+SUB(SelectExcelSheet, $post)   // Выбор листа Excel по номеру поста (общая логика для VK/FB/Twitter)
    switch($post)
    case(1)
       LCLICK(129,1002)     // выбор 1 листа
@@ -69,9 +60,33 @@ SUB(VKGroupPost, $post)
       LCLICK(315,1002)     // выбор 4 листа
    case(5)
       LCLICK(369,1002)     // выбор 5 листа
+   case(6)
+      LCLICK(428,1002)     // выбор 6 листа
+   case(7)
+      LCLICK(492,1002)     // выбор 7 листа
+   case(8)
+      LCLICK(550,1002)     // выбор 8 листа
+   case(9)
+      LCLICK(612,1002)     // выбор 9 листа
+   case(10)
+      LCLICK(662,1002)     // выбор 10 листа
    default
       LCLICK(129,1002)     // выбор 1 листа
    end_switch
+END_SUB
+
+
+SUB(VKGroupPost, $post)
+   WAITMS(RND(2501, 2900))
+   CLICK(797,531)
+   WAITMS(RND(2501, 2900))
+   LCLICK(692,609)
+   WAITMS(RND(1001, 1200))
+   LCLICK(990,536)         // устанавливаем время поста
+   WAITMS(RND(1001, 1200))
+   LCLICK(367,1056)        // переход в эксель
+   WAITMS(RND(1001, 1200))
+   SelectExcelSheet($post)
    WAITMS(RND(1001, 1200))
    LCLICK(416,269)				// выделение заголовка
    WAITMS(RND(1001, 1200))
@@ -126,13 +141,12 @@ SUB(VKGroupPost, $post)
    WAITMS(RND(1001, 1200))     // копирование + вставка картинки
    MOVE(1158,200)
    WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
+   $var = 0
+   WHILE($var < 4)
+      WHEELDOWN
+      WAITMS(500)
+      INC($var, 1)
+   END_CYC
    WAITMS(RND(5001, 5200))		// прокрутка экрана
 
    GETSCREEN()
@@ -180,30 +194,7 @@ END_SUB
 SUB(VKPersonalPost, $post)
    LCLICK(367,1056)        // переход в эксель
    WAITMS(RND(1001, 1200))
-   switch($post)
-   case(1)
-      LCLICK(129,1002)     // выбор 1 листа
-   case(2)
-      LCLICK(195,1002)     // выбор 2 листа
-   case(3)
-      LCLICK(251,1002)     // выбор 3 листа
-   case(4)
-      LCLICK(315,1002)     // выбор 4 листа
-   case(5)
-      LCLICK(369,1002)     // выбор 5 листа
-   case(6)
-      LCLICK(428,1002)     // выбор 6 листа
-   case(7)
-      LCLICK(492,1002)     // выбор 7 листа
-   case(8)
-      LCLICK(550,1002)     // выбор 8 листа
-   case(9)
-      LCLICK(612,1002)     // выбор 9 листа
-   case(10)
-      LCLICK(662,1002)     // выбор 10 листа
-   default
-      LCLICK(129,1002)     // выбор 1 листа
-   end_switch
+   SelectExcelSheet($post)
 
    WAITMS(RND(1001, 1200))
    LCLICK(416,269)				// выделение заголовка
@@ -258,9 +249,12 @@ SUB(VKPersonalPost, $post)
    KEYPRESS (#V)
    KEYUP (#CTRL)
    WAITMS(RND(1001, 1200))		// копирование + вставка картинки
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
+   $var = 0
+   WHILE($var < 2)
+      WHEELDOWN
+      WAITMS(500)
+      INC($var, 1)
+   END_CYC
    WAITMS(RND(5001, 5200))		// прокрутка экрана
 
    GETSCREEN()
@@ -304,16 +298,12 @@ END_SUB
 
 SUB(VKscroll)
    WAITMS(RND(2001, 2200))
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)
-   WHEELDOWN
-   WAITMS(500)					// прокрутка экрана
+   $var = 0
+   WHILE($var < 5)
+      WHEELDOWN
+      WAITMS(500)
+      INC($var, 1)
+   END_CYC					// прокрутка экрана
    LCLICK(1100,210)
    WAITMS(RND(1001, 1200))
 END_SUB
@@ -344,30 +334,7 @@ SUB(FBPersonalPost, $post)
    WAITMS(RND(1501, 1700))
    LCLICK(372,1067)   // переход в эксель
    WAITMS(RND(1501, 1700))
-   switch($post)
-   case(1)
-      LCLICK(129,1002)     // выбор 1 листа
-   case(2)
-      LCLICK(195,1002)     // выбор 2 листа
-   case(3)
-      LCLICK(251,1002)     // выбор 3 листа
-   case(4)
-      LCLICK(315,1002)     // выбор 4 листа
-   case(5)
-      LCLICK(369,1002)     // выбор 5 листа
-   case(6)
-      LCLICK(428,1002)     // выбор 6 листа
-   case(7)
-      LCLICK(492,1002)     // выбор 7 листа
-   case(8)
-      LCLICK(550,1002)     // выбор 8 листа
-   case(9)
-      LCLICK(612,1002)     // выбор 9 листа
-   case(10)
-      LCLICK(662,1002)     // выбор 10 листа
-   default
-      LCLICK(129,1002)     // выбор 1 листа
-   end_switch
+   SelectExcelSheet($post)
    WAITMS(RND(1501, 1700))
    LCLICK(416,269)   // выделение заголовка
    WAITMS(RND(1001, 1200))
@@ -453,30 +420,7 @@ SUB(TWPersonalPost, $post)
    WAITMS(RND(1001, 1200))
    LCLICK(372,1067)  // переход в эксель
    WAITMS(RND(1001, 1200))
-   switch($post)
-   case(1)
-      LCLICK(129,1002)     // выбор 1 листа
-   case(2)
-      LCLICK(195,1002)     // выбор 2 листа
-   case(3)
-      LCLICK(251,1002)     // выбор 3 листа
-   case(4)
-      LCLICK(315,1002)     // выбор 4 листа
-   case(5)
-      LCLICK(369,1002)     // выбор 5 листа
-   case(6)
-      LCLICK(428,1002)     // выбор 6 листа
-   case(7)
-      LCLICK(492,1002)     // выбор 7 листа
-   case(8)
-      LCLICK(550,1002)     // выбор 8 листа
-   case(9)
-      LCLICK(612,1002)     // выбор 9 листа
-   case(10)
-      LCLICK(662,1002)     // выбор 10 листа
-   default
-      LCLICK(129,1002)     // выбор 1 листа
-   end_switch
+   SelectExcelSheet($post)
    WAITMS(RND(1001, 1200))
    LCLICK(416,269)   // выделение заголовка
    WAITMS(RND(1001, 1200))
@@ -535,9 +479,6 @@ SUB(TWFriendsAdd)
       IF_PICTURE_IN (1070, 167, 1196, 1026, "NEWFOLLOW.bmp", -1, 80)
          LCLICK($_return1, $_return2)
       END_IF
-      WAITMS(RND(500, 700))
-      GETSCREEN()
-      WAITMS(RND(500, 700))
       IF_PICTURE_IN (1070, 167, 1196, 1026, "chitat.bmp", -1, 80)
          LCLICK($_return1, $_return2)
       END_IF
