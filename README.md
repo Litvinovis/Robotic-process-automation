@@ -2,7 +2,7 @@
 
 # 📢 Social Media Manager Script
 
-Скрипт автоматизации публикаций в социальных сетях на базе [Clickermann](http://crapware.aidf.org/page/clickermann) v4.13
+Скрипт автоматизации публикаций в социальных сетях на базе [Clickermann]([http://crapware.aidf.org/page/clickermann](https://clickermann.ru/)) v4.13
 
 </div>
 
